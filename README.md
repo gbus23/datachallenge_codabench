@@ -56,7 +56,7 @@ docker build -t docker-image .
 To test the docker image locally, run:
 
 ```bash
-docker run --rm -it -u root \
+docker run --rm -u root \
     -v "./ingestion_program":"/app/ingestion_program" \
     -v "./dev_phase/input_data":/app/input_data \
     -v "./ingestion_res":/app/output \
@@ -64,7 +64,7 @@ docker run --rm -it -u root \
     --name ingestion docker-image \
         python /app/ingestion_program/ingestion.py
 
-docker run --rm -it -u root \
+docker run --rm -u root \
     -v "./scoring_program":"/app/scoring_program" \
     -v "./dev_phase/reference_data":/app/input/ref \
     -v "./ingestion_res":/app/input/res \

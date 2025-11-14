@@ -54,7 +54,8 @@ jobs:
                         python /app/ingestion_program/ingestion.py
 
             - name: Test scoring program
-              run: docker run --rm -u root \
+              run: |
+                docker run --rm -u root \
                     -v "./scoring_program":"/app/scoring_program" \
                     -v "./dev_phase/reference_data":/app/input/ref \
                     -v "./ingestion_res":/app/input/res \

@@ -128,3 +128,8 @@ docker run --rm -u root \
     --name scoring docker-image \
         python /app/scoring_program/scoring.py
 ```
+
+### CI for the bundle
+
+This repo defines a CI for the bundle, which build a docker image from the `tools/Dockerfile`,
+and try to run `tools/setup_data.py` and then the ingestion/scoring programs.

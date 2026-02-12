@@ -1,2 +1,3 @@
 pandas
 scikit-learn
+# Note: numpy is included as a dependency of pandas and scikit-learn

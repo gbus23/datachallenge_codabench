@@ -37,10 +37,11 @@ public and private test set.
       In our example, we compute `accuracy` on two test sets (public and
       private) as well as runtime.
 - `solution/`: contains a sample solution submission that participants can use
-  as a reference. Here, this is a simple Random Forest classifier. This file is
-  gives the user the structure of the code they need to submit. In our example,
-  the user needs to submit a `submission.py` file with `get_model` function that
-  returns a scikit-learn compatible model.
+  as a reference. Here, this is a simple Random Forest regressor. This file
+  gives the user the structure of the code they need to submit. Participants
+  need to create a `submission.py` file with `get_model` function that returns
+  a scikit-learn compatible model, and then package it as `submission.zip` for
+  submission on Codabench.
 - `*_phase/`: contains the data for a given phase, including input data and
   reference labels. Running `tools/setup_data.py` will generate dummy data for a
   development phase. For a real competition, this data should be replaced with

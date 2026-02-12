@@ -1,11 +1,29 @@
 version: 2
-title: Templat competition - Dummy classification
-description: Dummy classification task
+title: Global Value Chain Challenge - TiVA Prediction
+description: |
+  Predict Trade in Value Added (TiVA) flows between countries using macroeconomic indicators.
+  
+  **Context**: In today's globalized economy, understanding how value is created and distributed across international supply chains is crucial. Trade in Value Added (TiVA) measures the domestic value added embodied in foreign final demand, providing insights into the real contribution of each country to global value chains.
+  
+  **Task**: This is a regression challenge where participants must predict TiVA flows from G7 countries (Canada, France, Germany, Italy, Japan, United Kingdom, United States) to a wide range of destination countries across multiple economic sectors.
+  
+  **Data**: The dataset combines:
+  - TiVA data from OECD covering 2005-2020
+  - Macroeconomic indicators from World Bank for both source and destination countries
+  - Features include GDP, inflation, trade openness, FDI, technology indicators, labor market metrics, and more
+  
+  **Evaluation**: Models are evaluated using Mean Absolute Error (MAE) on two test sets:
+  - Public test set (2018): For leaderboard ranking during the competition
+  - Private test set (2019): For final ranking after competition closure
+  
+  **Challenge**: Build a robust regression model that can accurately predict TiVA flows by leveraging the complex relationships between macroeconomic indicators and international trade patterns.
 image: logo.png
 registration_auto_approve: False  # if True, do not require approval from admin to join the comp
 
 terms: pages/terms.md
 pages:
+  - title: Challenge Details
+    file: pages/challenge_detail.md
   - title: Participation
     file: pages/participate.md
   - title: Seed
@@ -15,8 +33,26 @@ pages:
 
 tasks:
   - index: 0
-    name: Developement Task
-    description: 'Tune models with training data, test against examples contained in public test data'
+    name: Development Task
+    description: |
+      Predict TiVA (Trade in Value Added) flows between countries using macroeconomic features.
+      
+      **Training Data**: Historical data from 2005 to 2017 covering:
+      - Source countries: G7 (Canada, France, Germany, Italy, Japan, UK, USA)
+      - Target countries: 80+ countries worldwide
+      - Economic sectors: Multiple sectors including manufacturing, services, agriculture, etc.
+      - Features: 40+ macroeconomic indicators per country pair (GDP, inflation, trade openness, FDI, technology, labor market, etc.)
+      
+      **Test Sets**:
+      - Public test (2018): Available during competition for leaderboard ranking
+      - Private test (2019): Used for final evaluation after competition closure
+      
+      **Objective**: Minimize Mean Absolute Error (MAE) on both test sets by accurately predicting TiVA values.
+      
+      **Data Characteristics**:
+      - Training set: ~524,000 samples with 43 numerical features
+      - Test sets: ~40,000 samples each (2018 and 2019)
+      - Target variable: TiVA_Value_Target (continuous value representing trade in value added)
     input_data: dev_phase/input_data/
     reference_data: dev_phase/reference_data/
     ingestion_program: ingestion_program/
@@ -31,7 +67,16 @@ solutions:
 
 phases:
   - name: Development Phase
-    description: 'Development phase: tune your models.'
+    description: |
+      Development phase: Build and tune your regression models to predict TiVA flows.
+      
+      During this phase, participants can:
+      - Train models on historical data (2005-2017)
+      - Submit predictions for the public test set (2018) to see their ranking
+      - Iterate and improve their models based on leaderboard feedback
+      - Experiment with feature engineering, model selection, and hyperparameter tuning
+      
+      The private test set (2019) will be used for final evaluation after the competition closes.
     start: 10-07-2025
     end: 03-31-2026
     tasks:
@@ -41,11 +86,11 @@ leaderboards:
   - title: Results
     key: main
     columns:
-      - title: Test Accuracy
+      - title: Test MAE
         key: test
         index: 0
         sorting: asc
-      - title: Private Test Accuracy
+      - title: Private Test MAE
         key: private_test
         index: 1
         sorting: asc
